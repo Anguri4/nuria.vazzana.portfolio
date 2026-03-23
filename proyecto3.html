@@ -353,4 +353,13 @@
   <p class="footer-copy">© All rights reserved 2026.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false
+<script>
+  function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === lang.toUpperCase());
+    });
+  }
+</script>
+</body>
+</html>
