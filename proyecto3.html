@@ -26,9 +26,9 @@
   .nav-links a { font-size:0.88rem; color:var(--grey); text-decoration:none; transition:color 0.2s; }
   .nav-links a:hover { color:var(--black); }
   .lang-toggle { display:flex; gap:0.5rem; }
-  .lang-btn { background:none; border:1px solid var(--grey-light); padding:0.3rem 0.7rem; border-radius:20px; font-size:0.78rem; cursor:pointer; color:var(--grey); font-family:'Inter',sans-serif; }
+  .lang-btn { background:none; border:1px solid var(--grey-light); padding:0.3rem 0.7rem; border-radius:20px; font-size:0.78rem; cursor:pointer; color:var(--grey); font-family:'Inter',sans-serif; transition:all 0.2s; }
   .lang-btn.active { background:var(--black); color:var(--white); border-color:var(--black); }
-  .btn-cv {
+    .btn-cv {
     display: inline-flex;
     align-items: center;
     gap: 0.7rem;
@@ -47,8 +47,8 @@
   .project-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.5rem; }
   .tag { font-size:0.75rem; font-weight:500; background:#E0E7FF; color:#4F39F6; padding:0.35rem 0.85rem; border-radius:20px; }
   .project-hero h1 { font-family:'Gloock',serif; font-size:clamp(2.4rem,5vw,3.8rem); font-weight:400; line-height:1.1; letter-spacing:-0.02em; margin-bottom:2rem; }
-  .hero-img { width:100%; aspect-ratio:16/7; border-radius:1.5rem; overflow:hidden; position:relative; margin-bottom:4rem; }
-  .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-img { width:100%; aspect-ratio:16/7; background:var(--accent-light); border-radius:1.5rem; overflow:hidden; position:relative; margin-bottom:4rem; }
+  .hero-img::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(91,78,255,0.12) 0%,transparent 60%); }
 
   .project-content { max-width:1200px; margin:0 auto; padding:0 3rem 6rem; }
 
@@ -64,13 +64,8 @@
 
   .img-2col { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:3rem; }
   .img-3col { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; margin-bottom:3rem; }
-  .img-2col img, .img-3col img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 1.2rem;
-  }
-  .img-2col img.tall { aspect-ratio: 3/4; }
+  .img-placeholder { background:var(--accent-light); border-radius:1.2rem; aspect-ratio:4/3; position:relative; overflow:hidden; }
+  .img-placeholder::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(91,78,255,0.08),transparent); }
 
   .process-section { margin-bottom:4rem; }
   .process-section h2 { font-family:'Gloock',serif; font-size:1.8rem; font-weight:400; margin-bottom:2rem; }
@@ -80,47 +75,13 @@
   .process-card h3 { font-size:1rem; font-weight:500; margin-bottom:0.6rem; }
   .process-card p { font-size:0.88rem; color:var(--grey); line-height:1.65; }
 
-  /* AI Section - Unified style */
-  .ai-section {
-    background: var(--card-bg);
-    border-radius: 1.5rem;
-    padding: 2.5rem;
-    margin-bottom: 3rem;
-  }
-  .ai-section h2 { 
-    font-family:'Gloock',serif; 
-    font-size:1.8rem; 
-    font-weight:400; 
-    margin-bottom:0.8rem; 
-    color: var(--black); 
-  }
-  .ai-section > p { 
-    font-size:0.92rem; 
-    color: var(--grey); 
-    line-height:1.75; 
-    margin-bottom:1.8rem; 
-  }
-  .ai-features { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 1rem; 
-  }
-  .ai-feature {
-    background: white;
-    border-radius: 1rem;
-    padding: 1.5rem;
-    border: 1px solid #e8e7e3;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-  .ai-feature::before { content: none; }
-  .ai-feature-label {
-    font-size: 0.88rem;
-    color: var(--black);
-    line-height: 1.45;
-    font-weight: 400;
-  }
+  /* AI Section special */
+  .ai-section { background:var(--black); color:var(--white); border-radius:1.5rem; padding:3rem; margin-bottom:3rem; }
+  .ai-section h2 { font-family:'Gloock',serif; font-size:1.8rem; font-weight:400; margin-bottom:1rem; }
+  .ai-section > p { font-size:0.95rem; color:rgba(248,247,244,0.65); line-height:1.75; margin-bottom:2rem; }
+  .ai-features { display:flex; gap:1rem; flex-wrap:wrap; }
+  .ai-feature { background:rgba(255,255,255,0.08); border-radius:50px; padding:0.5rem 1.2rem; font-size:0.85rem; color:rgba(248,247,244,0.85); display:flex; align-items:center; gap:0.4rem; }
+  .ai-feature::before { content:'✦'; color:var(--accent); font-size:0.7rem; }
 
   .results-section { margin-bottom:4rem; }
   .results-section h2 { font-family:'Gloock',serif; font-size:1.8rem; font-weight:400; margin-bottom:2rem; }
@@ -227,12 +188,12 @@
     <li><a href="index.html#about" data-lang="es">Sobre mí</a><a href="index.html#about" data-lang="en">About</a></li>
     <li><a href="index.html#projects" data-lang="es">Proyectos</a><a href="index.html#projects" data-lang="en">Projects</a></li>
     <li><a href="index.html#skills">Skills</a></li>
-    <li><a href="/cdn-cgi/l/email-protection#5d35383131321d33282f343c2b3c27273c333c733e3230" data-lang="es">Contacto</a><a href="/cdn-cgi/l/email-protection#2149444d4d4e614f5453484057405b5b404f40[...]
+    <li><a href="/cdn-cgi/l/email-protection#5d35383131321d33282f343c2b3c27273c333c733e3230" data-lang="es">Contacto</a><a href="/cdn-cgi/l/email-protection#2149444d4d4e614f5453484057405b5b404f400f424e4c" data-lang="en">Contact</a></li>
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('es')">ES</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <a href="#" class="btn-cv"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.5 12.5v3.333A1.667 1.667 0 0 1 15.833 17.5H4.167A1.667 1.667 0 0 1 2.5 15.833V12.5" stroke=[...]
+    <a href="#" class="btn-cv"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M17.5 12.5v3.333A1.667 1.667 0 0 1 15.833 17.5H4.167A1.667 1.667 0 0 1 2.5 15.833V12.5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.833 8.333 10 12.5l4.167-4.167" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12.5v-10" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-lang="es">Descarga CV</span><span data-lang="en">Download CV</span></a>
   </ul>
 </nav>
 
@@ -245,9 +206,7 @@
   </div>
   <h1 data-lang="es">Campaña Paid Media: escalado creativo con IA</h1>
   <h1 data-lang="en">Paid Media Campaign: creative scaling with AI</h1>
-  <div class="hero-img">
-    <img src="IMG/Proyecto3/P3_img1_1440x630.jpg" alt="Paid Media Campaign AI">
-  </div>
+  <div class="hero-img"></div>
 </section>
 
 <div class="project-content">
@@ -264,21 +223,21 @@
       <h3 data-lang="es">Mi función</h3>
       <h3 data-lang="en">My role</h3>
       <ul class="funcion-list">
-        <li data-lang="es"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348[...]
-        <li data-lang="en"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348[...]
-        <li data-lang="es"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348[...]
-        <li data-lang="en"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348[...]
-        <li data-lang="es"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348[...]
-        <li data-lang="en"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348[...]
-        <li data-lang="es"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348[...]
-        <li data-lang="en"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348[...]
+        <li data-lang="es"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348C16.5211 15.5268 15.0897 16.8667 13.3436 17.6311C11.5975 18.3955 9.64203 18.5381 7.80342 18.0353C5.96482 17.5325 4.35417 16.4145 3.24007 14.8678C2.12597 13.3212 1.57577 11.4394 1.68123 9.53615C1.78668 7.63294 2.5414 5.8234 3.81955 4.4093C5.09769 2.9952 6.82199 2.06202 8.70489 1.76537C10.5878 1.46872 12.5155 1.82654 14.1665 2.77916" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 9.16659L10 11.6666L18.3333 3.33325" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>Definición del enfoque creativo y sistema de variaciones</li>
+        <li data-lang="en"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348C16.5211 15.5268 15.0897 16.8667 13.3436 17.6311C11.5975 18.3955 9.64203 18.5381 7.80342 18.0353C5.96482 17.5325 4.35417 16.4145 3.24007 14.8678C2.12597 13.3212 1.57577 11.4394 1.68123 9.53615C1.78668 7.63294 2.5414 5.8234 3.81955 4.4093C5.09769 2.9952 6.82199 2.06202 8.70489 1.76537C10.5878 1.46872 12.5155 1.82654 14.1665 2.77916" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 9.16659L10 11.6666L18.3333 3.33325" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>Definition of creative approach and variation system</li>
+        <li data-lang="es"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348C16.5211 15.5268 15.0897 16.8667 13.3436 17.6311C11.5975 18.3955 9.64203 18.5381 7.80342 18.0353C5.96482 17.5325 4.35417 16.4145 3.24007 14.8678C2.12597 13.3212 1.57577 11.4394 1.68123 9.53615C1.78668 7.63294 2.5414 5.8234 3.81955 4.4093C5.09769 2.9952 6.82199 2.06202 8.70489 1.76537C10.5878 1.46872 12.5155 1.82654 14.1665 2.77916" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 9.16659L10 11.6666L18.3333 3.33325" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>Integración de herramientas de IA generativa en el flujo de producción</li>
+        <li data-lang="en"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348C16.5211 15.5268 15.0897 16.8667 13.3436 17.6311C11.5975 18.3955 9.64203 18.5381 7.80342 18.0353C5.96482 17.5325 4.35417 16.4145 3.24007 14.8678C2.12597 13.3212 1.57577 11.4394 1.68123 9.53615C1.78668 7.63294 2.5414 5.8234 3.81955 4.4093C5.09769 2.9952 6.82199 2.06202 8.70489 1.76537C10.5878 1.46872 12.5155 1.82654 14.1665 2.77916" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 9.16659L10 11.6666L18.3333 3.33325" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>Integration of generative AI tools into the production workflow</li>
+        <li data-lang="es"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348C16.5211 15.5268 15.0897 16.8667 13.3436 17.6311C11.5975 18.3955 9.64203 18.5381 7.80342 18.0353C5.96482 17.5325 4.35417 16.4145 3.24007 14.8678C2.12597 13.3212 1.57577 11.4394 1.68123 9.53615C1.78668 7.63294 2.5414 5.8234 3.81955 4.4093C5.09769 2.9952 6.82199 2.06202 8.70489 1.76537C10.5878 1.46872 12.5155 1.82654 14.1665 2.77916" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 9.16659L10 11.6666L18.3333 3.33325" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>Iteración basada en métricas de performance</li>
+        <li data-lang="en"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348C16.5211 15.5268 15.0897 16.8667 13.3436 17.6311C11.5975 18.3955 9.64203 18.5381 7.80342 18.0353C5.96482 17.5325 4.35417 16.4145 3.24007 14.8678C2.12597 13.3212 1.57577 11.4394 1.68123 9.53615C1.78668 7.63294 2.5414 5.8234 3.81955 4.4093C5.09769 2.9952 6.82199 2.06202 8.70489 1.76537C10.5878 1.46872 12.5155 1.82654 14.1665 2.77916" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 9.16659L10 11.6666L18.3333 3.33325" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>Performance metrics-based iteration</li>
+        <li data-lang="es"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348C16.5211 15.5268 15.0897 16.8667 13.3436 17.6311C11.5975 18.3955 9.64203 18.5381 7.80342 18.0353C5.96482 17.5325 4.35417 16.4145 3.24007 14.8678C2.12597 13.3212 1.57577 11.4394 1.68123 9.53615C1.78668 7.63294 2.5414 5.8234 3.81955 4.4093C5.09769 2.9952 6.82199 2.06202 8.70489 1.76537C10.5878 1.46872 12.5155 1.82654 14.1665 2.77916" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 9.16659L10 11.6666L18.3333 3.33325" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>Diseño y adaptación de creatividades para distintos formatos</li>
+        <li data-lang="en"><svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.1673 8.33332C18.5479 10.2011 18.2767 12.1428 17.3989 13.8348C16.5211 15.5268 15.0897 16.8667 13.3436 17.6311C11.5975 18.3955 9.64203 18.5381 7.80342 18.0353C5.96482 17.5325 4.35417 16.4145 3.24007 14.8678C2.12597 13.3212 1.57577 11.4394 1.68123 9.53615C1.78668 7.63294 2.5414 5.8234 3.81955 4.4093C5.09769 2.9952 6.82199 2.06202 8.70489 1.76537C10.5878 1.46872 12.5155 1.82654 14.1665 2.77916" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 9.16659L10 11.6666L18.3333 3.33325" stroke="#4F39F6" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>Design and adaptation of creatives for different formats</li>
       </ul>
     </div>
   </div>
 
   <div class="img-2col">
-    <img src="IMG/Proyecto3/P3_img2_600x800.jpg" alt="Creative variation 1" class="tall">
-    <img src="IMG/Proyecto3/P3_img3_600x800.jpg" alt="Creative variation 2" class="tall">
+    <div class="img-placeholder"></div>
+    <div class="img-placeholder"></div>
   </div>
 
   <div class="process-section">
@@ -317,9 +276,9 @@
   </div>
 
   <div class="img-3col">
-    <img src="IMG/Proyecto3/P3_img4_400x300.jpg" alt="Campaign result 1">
-    <img src="IMG/Proyecto3/P3_img5_400x300.jpg" alt="Campaign result 2">
-    <img src="IMG/Proyecto3/P3_img6_400x300.jpg" alt="Campaign result 3">
+    <div class="img-placeholder"></div>
+    <div class="img-placeholder"></div>
+    <div class="img-placeholder"></div>
   </div>
 
   <!-- AI Integration -->
@@ -329,18 +288,12 @@
     <p data-lang="es">La IA no se utilizó como generador masivo de contenido, sino como acelerador creativo dentro de un marco definido. La estrategia y el criterio creativo permanecieron como eje central.</p>
     <p data-lang="en">AI was not used as a mass content generator, but as a creative accelerator within a defined framework. Strategy and creative judgment remained the central axis.</p>
     <div class="ai-features">
-      <div class="ai-feature">
-        <span class="ai-feature-label" data-lang="es">Generar variaciones visuales</span>
-        <span class="ai-feature-label" data-lang="en">Generate visual variations</span>
-      </div>
-      <div class="ai-feature">
-        <span class="ai-feature-label" data-lang="es">Explorar estilos y mensajes con mayor rapidez</span>
-        <span class="ai-feature-label" data-lang="en">Explore styles and messages faster</span>
-      </div>
-      <div class="ai-feature">
-        <span class="ai-feature-label" data-lang="es">Reducir tiempos de producción</span>
-        <span class="ai-feature-label" data-lang="en">Reduce production times</span>
-      </div>
+      <span class="ai-feature" data-lang="es">Generar variaciones visuales</span>
+      <span class="ai-feature" data-lang="en">Generate visual variations</span>
+      <span class="ai-feature" data-lang="es">Explorar estilos y mensajes con mayor rapidez</span>
+      <span class="ai-feature" data-lang="en">Explore styles and messages faster</span>
+      <span class="ai-feature" data-lang="es">Reducir tiempos de producción</span>
+      <span class="ai-feature" data-lang="en">Reduce production times</span>
     </div>
   </div>
 
@@ -392,9 +345,9 @@
     <p class="footer-phrase" data-lang="es">Donde todo tiene propósito. Diseñemos con intención.</p>
     <p class="footer-phrase" data-lang="en">Where everything has purpose. Let's design with intention.</p>
     <div class="footer-links">
-      <a href="https://linkedin.com" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.3335 6.66675C14.6596 6.66675 15.93[...]
-      <a href="#"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 12.5V15.8333C17.5 16.2754 17.3244 16.6993 17.0118 17.0118C16.6993 1[...]
-      <a href="/cdn-cgi/l/email-protection#b7dfd2dbdbd8f7d9c2c5ded6c1d6cdcdd6d9d699d4d8da"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="[...]
+      <a href="https://linkedin.com" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.3335 6.66675C14.6596 6.66675 15.9313 7.19353 16.869 8.13121C17.8067 9.0689 18.3335 10.3407 18.3335 11.6667V17.5001H15.0002V11.6667C15.0002 11.2247 14.8246 10.8008 14.512 10.4882C14.1994 10.1757 13.7755 10.0001 13.3335 10.0001C12.8915 10.0001 12.4675 10.1757 12.155 10.4882C11.8424 10.8008 11.6668 11.2247 11.6668 11.6667V17.5001H8.3335V11.6667C8.3335 10.3407 8.86028 9.0689 9.79796 8.13121C10.7356 7.19353 12.0074 6.66675 13.3335 6.66675Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.99984 7.5H1.6665V17.5H4.99984V7.5Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.33317 5.00008C4.25365 5.00008 4.99984 4.25389 4.99984 3.33341C4.99984 2.41294 4.25365 1.66675 3.33317 1.66675C2.4127 1.66675 1.6665 2.41294 1.6665 3.33341C1.6665 4.25389 2.4127 5.00008 3.33317 5.00008Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>LinkedIn</a>
+      <a href="#"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 12.5V15.8333C17.5 16.2754 17.3244 16.6993 17.0118 17.0118C16.6993 17.3244 16.2754 17.5 15.8333 17.5H4.16667C3.72464 17.5 3.30072 17.3244 2.98816 17.0118C2.67559 16.6993 2.5 16.2754 2.5 15.8333V12.5" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.8335 8.33325L10.0002 12.4999L14.1668 8.33325" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12.5V2.5" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>CV</a>
+      <a href="/cdn-cgi/l/email-protection#b7dfd2dbdbd8f7d9c2c5ded6c1d6cdcdd6d9d699d4d8da"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6665 3.33325H3.33317C2.4127 3.33325 1.6665 4.07944 1.6665 4.99992V14.9999C1.6665 15.9204 2.4127 16.6666 3.33317 16.6666H16.6665C17.587 16.6666 18.3332 15.9204 18.3332 14.9999V4.99992C18.3332 4.07944 17.587 3.33325 16.6665 3.33325Z" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.3332 5.83325L10.8582 10.5833C10.6009 10.7444 10.3034 10.8299 9.99984 10.8299C9.69624 10.8299 9.39878 10.7444 9.1415 10.5833L1.6665 5.83325" stroke="currentColor" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>Email</a>
     </div>
   </div>
   <p class="footer-copy">© All rights reserved 2026.</p>
